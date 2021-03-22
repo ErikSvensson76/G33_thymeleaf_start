@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>Messages: </h1>
+    <form th:action="@{/home/message}" method="post">
+
+        <div class="form-group">
+            <label>Message:</label>
+            <input class="form-control" type="text" id="message" name="message" placeholder="Enter a message...">
+        </div>
+
+        <input class="btn btn-success" type="submit" value="Submit"/>
+    </form>
+
+    <div th:if="${messages.isEmpty()}">
+        <p>No messages yet!</p>
+    </div>
+
+    <div >
+        <ul th:each="message : ${messages}">
+            <p th:text="${message}"></p>
+        </ul>
+    </div>
+
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

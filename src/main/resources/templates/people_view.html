@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>People</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+    <h1>All people registered:</h1>
+    <a class="btn btn-outline-info" th:href="@{/person/form}">Add</a>
+    <div th:if="${people.isEmpty()}">
+        <p>Not one is registered yet</p>
+    </div>
+    <table class="table shadow">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name:</th>
+                <th scope="col">Username:</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${people}">
+            <td><span th:text="${person.name}"></span></td>
+            <td><span th:text="${person.username}"></span></td>
+            <td><a href="#" class="btn btn-info">Details </a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
